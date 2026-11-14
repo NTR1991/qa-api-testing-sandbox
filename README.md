@@ -18,12 +18,13 @@ The primary goal of this project is to demonstrate my skills in **Software Quali
 
 ## 📂 Repository Structure
 
-```
+```text
 qa-api-testing-sandbox/
 │
 ├── 01-app-under-test/            # The application under test (PHP & MySQL)
 │   ├── api/
-│   │   └── peliculas.php         # REST API endpoints (GET, POST, PUT, DELETE)
+│   │   ├── peliculas.php         # REST API endpoints (GET, POST, PUT, DELETE)
+│   │   └── README.md             # API documentation & testing scenarios
 │   ├── css/
 │   │   └── style.css             # Frontend styling
 │   ├── conexion.php              # Secure PDO connection (Placeholders used)
@@ -34,7 +35,8 @@ qa-api-testing-sandbox/
 │   └── peliculas.sql             # Database schema & seed data
 │
 ├── 02-api-tests-postman/         # Automated API Tests (Postman Collection)
-│   └── (Coming soon...)
+│   ├── peliculas-api-tests.json  # Postman collection with automated tests
+│   └── README.md                 # Instructions to run the tests
 │
 └── README.md
 ```
