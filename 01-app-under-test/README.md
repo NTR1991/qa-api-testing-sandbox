@@ -1,4 +1,4 @@
-# 📱 Application Under Test (AUT)
+## 📱 Application Under Test (AUT)
 
 This folder contains the PHP and MySQL application that serves as the **Application Under Test (AUT)** for this QA Sandbox.
 
