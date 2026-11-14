@@ -1,8 +1,8 @@
 <?php
-$host = 'sql207.infinityfree.com';
-$dbname = 'if0_42915722_peliculas';  
-$username = 'if0_42915722';
-$password = 'Santarosala';
+$host = 'localhost'; // O tu host de InfinityFree
+$dbname = 'your_database_name';  
+$username = 'your_username';
+$password = 'your_password_here'; // Nunca pongas la real aquí
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
