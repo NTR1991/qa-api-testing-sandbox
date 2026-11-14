@@ -1,95 +1,82 @@
-# 🎮 Video Game Management System: PHP REST API & CRUD
+# 🧪 QA API Testing Sandbox: PHP REST API & CRUD
 
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![QA Ready](https://img.shields.io/badge/QA_Automation-Ready-success?style=for-the-badge)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![QA Automation](https://img.shields.io/badge/QA_Automation-Ready-success?style=for-the-badge)
 
 ## 📋 Project Overview
-A robust, fully functional CRUD (Create, Read, Update, Delete) application built with **PHP and MySQL** to manage a video game catalog. The system features a clean user interface and, most importantly, a comprehensive **REST API** designed for programmatic access and integration testing.
+This repository is my **QA Automation Sandbox**. It contains a fully functional CRUD (Create, Read, Update, Delete) application built with **PHP and MySQL**, which serves as the **Application Under Test (AUT)**. 
 
-## 🎯 Objective & QA Perspective
-The primary goal was to architect a secure backend using **PDO (PHP Data Objects)** and **prepared statements** to prevent SQL injection. 
+The primary goal of this project is to demonstrate my skills in **Software Quality Assurance**, focusing on API testing, edge case validation, security testing, and backend automation preparation.
 
-From a **Quality Assurance perspective**, this project serves as an ideal test bed for API automation. Understanding the underlying backend logic, HTTP status codes, and JSON data structures is essential for designing effective test cases and automating API validations.
+## 🎯 QA Objectives & Test Strategy
+- **Test Case Design:** Preparing scenarios for valid and invalid inputs (e.g., year out of range, empty fields, negative duration).
+- **API Assertions:** Validating expected HTTP status codes (`200`, `201`, `204`, `400`, `404`) and JSON payload structures.
+- **Security Testing:** The backend uses PDO and prepared statements, allowing QA to practice SQL injection validation. The frontend uses `htmlspecialchars()` to prevent XSS attacks.
+- **State Validation:** Testing the "Empty State" (what the user sees when there is no data) and error handling (e.g., trying to edit/delete a non-existent movie).
 
-## ✨ Key Features
+## 📂 Repository Structure
 
-| Feature | Description |
-| :--- | :--- |
-| **Full CRUD Operations** | Seamless creation, reading, updating, and deletion of video game records. |
-| **REST API Integration** | Exposes JSON endpoints (GET, POST, PUT, DELETE) ready for automated API testing. |
-| **Data Validation** | Strict validation of required fields and year ranges to ensure data integrity. |
-| **Error Handling** | Returns appropriate HTTP status codes (200, 201, 204, 400, 404, 405) for precise test assertions. |
-| **Secure Architecture** | Separation of concerns and secure database connection using PDO. |
+```
+qa-api-testing-sandbox/
+│
+├── 01-app-under-test/            # The application under test (PHP & MySQL)
+│   ├── api/
+│   │   └── peliculas.php         # REST API endpoints (GET, POST, PUT, DELETE)
+│   ├── css/
+│   │   └── style.css             # Frontend styling
+│   ├── conexion.php              # Secure PDO connection (Placeholders used)
+│   ├── index.php                 # UI: Read (includes Empty State validation)
+│   ├── crear.php                 # UI: Create
+│   ├── editar.php                # UI: Update
+│   ├── eliminar.php              # UI: Delete
+│   └── peliculas.sql             # Database schema & seed data
+│
+├── 02-api-tests-postman/         # Automated API Tests (Postman Collection)
+│   └── (Coming soon...)
+│
+└── README.md
+```
 
-## 🛠️ Technologies Used
+## 🚀 How to Run the Application Under Test
 
-- **Backend:** PHP
-- **Database:** MySQL
-- **Security:** PDO (PHP Data Objects), Prepared Statements
-- **Frontend:** HTML5, CSS3
-- **Version Control:** Git, GitHub
-
-## 📂 Folder Structure
-
-````
-Crud-Examen/
-└── Videojuegos_Crud/
-    ├── api/
-    │   └── juegos.php        # REST API endpoints (GET, POST, PUT, DELETE)
-    ├── css/
-    │   └── style.css         # Styling (dark theme, UI components)
-    ├── conexion.php          # Secure database connection (PDO)
-    ├── index.php             # Video game list (READ)
-    ├── crear.php             # Create form (CREATE)
-    ├── editar.php            # Edit form (UPDATE)
-    ├── eliminar.php          # Delete logic (DELETE)
-    └── videojuegos.sql       # Database export (schema + initial data)
-````
-
-## 🗄️ Database Setup
-
-Import the `videojuegos.sql` file using phpMyAdmin or the command line:
-
-    mysql -u root -p < videojuegos.sql
+1. **Database Setup:** Import the `01-app-under-test/peliculas.sql` file into your local MySQL server (e.g., via phpMyAdmin). The database will be named `cine`.
+2. **Configure DB Connection:** Open `01-app-under-test/conexion.php` and update the placeholders (`your_database_name`, `your_username`, `your_password_here`) with your local XAMPP/MySQL credentials.
+3. **Run the App:** Place the `01-app-under-test` folder in your local server (e.g., `htdocs`). Open `index.php` in your browser.
 
 ## 🔌 REST API Endpoints (Ready for Testing)
 
-This API is fully prepared to be tested manually (e.g., via Postman) or automated (e.g., via REST Assured, Python Requests, or similar).
+The application exposes the following endpoints, designed to return standard HTTP status codes for precise test assertions:
 
 | Method | Endpoint | Description | Expected Response |
 | :--- | :--- | :--- | :--- |
-| `GET` | `/api/juegos.php` | Retrieve all video games | `200 OK` + JSON Array |
-| `GET` | `/api/juegos.php?id=1` | Retrieve a specific game | `200 OK` + JSON Object |
-| `POST` | `/api/juegos.php` | Create a new game | `201 Created` + JSON Object |
-| `PUT` | `/api/juegos.php?id=1` | Update an existing game | `200 OK` + JSON Object |
-| `DELETE` | `/api/juegos.php?id=1` | Delete a game | `204 No Content` |
+| `GET` | `/api/peliculas.php` | Retrieve all movies | `200 OK` + JSON Array |
+| `GET` | `/api/peliculas.php?id=1` | Retrieve a specific movie | `200 OK` + JSON Object |
+| `POST` | `/api/peliculas.php` | Create a new movie | `201 Created` + JSON Object |
+| `PUT` | `/api/peliculas.php?id=1` | Update an existing movie | `200 OK` + JSON Object |
+| `DELETE` | `/api/peliculas.php?id=1` | Delete a movie | `204 No Content` |
 
-### Example Request (POST)
+### Example: Create a movie (POST)
 
-    {
-        "titulo": "The Legend of Zelda",
-        "desarrollador": "Nintendo",
-        "plataforma": "Nintendo Switch",
-        "genero": "Aventura",
-        "anio": 2023
-    }
+```json
+{
+    "titulo": "The Matrix",
+    "director": "Lana Wachowski",
+    "genero": "Sci-Fi",
+    "anio": 1999,
+    "duracion": 136
+}
+```
+
+## 🛠️ Technologies & Concepts Applied
+
+- **Backend:** PHP
+- **Database:** MySQL, PDO, Prepared Statements
+- **Frontend:** HTML5, CSS3
+- **QA Focus:** Input Validation, Error Handling, HTTP Status Codes, XSS Prevention, JSON Serialization.
+
 ---
-
-
-## 📚 Technical & QA Concepts Applied
-
-- **Backend Development:** Implemented full CRUD operations using PHP and MySQL.
-- **API Testing Preparation:** Designed endpoints that return standard HTTP status codes (200, 201, 204, 400, 404, 405), making them perfect for writing automated test assertions.
-- **Data Validation:** Implemented server-side validation, mimicking real-world scenarios where QA must test edge cases (e.g., invalid year formats, missing fields).
-- **Security Testing:** Used PDO and prepared statements, providing a secure baseline to practice vulnerability testing (e.g., SQL injection attempts).
-- **JSON Serialization:** Ensured proper JSON encoding/decoding for reliable API payload verification.
-
----
-
 ## 👤 Author
 
 **Nestor Reyes**  
