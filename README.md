@@ -1,148 +1,52 @@
-# 🎬 CRUD de Películas con PHP
+# 🎬 Movie Management System: PHP REST API & CRUD
 
-## 📋 Descripción
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![QA Ready](https://img.shields.io/badge/QA_Automation-Ready-success?style=for-the-badge)
 
-Aplicación CRUD completa construida con **PHP y MySQL** para gestionar un catálogo de películas. Permite a los usuarios añadir, visualizar, editar y eliminar películas, con una interfaz limpia y fácil de usar. Además, incluye una **API REST** para acceso programático.
+## 📋 Project Overview
+A robust, fully functional CRUD (Create, Read, Update, Delete) application built with **PHP and MySQL** to manage a movie catalog. The system features a clean user interface and, most importantly, a comprehensive **REST API** designed for programmatic access and integration testing.
 
----
+## 🎯 Objective & QA Perspective
+The primary goal was to architect a secure backend using **PDO (PHP Data Objects)** and **prepared statements** to prevent SQL injection. 
 
-## 🎯 Objetivo del proyecto
+From a **Quality Assurance perspective**, this project serves as an ideal test bed for API automation. Understanding the underlying backend logic, HTTP status codes, and JSON data structures is essential for designing effective test cases and automating API validations.
 
-Construir una aplicación CRUD (Create, Read, Update, Delete) completa utilizando **PHP y MySQL**, siguiendo buenas prácticas como el uso de **PDO** para la conexión a la base de datos y **sentencias preparadas** para prevenir inyecciones SQL.
+## ✨ Key Features
 
----
-
-## ✨ Características
-
-| Característica | Descripción |
+| Feature | Description |
 | :--- | :--- |
-| **Listar películas** | Muestra todas las películas en una tabla (READ) |
-| **Añadir película** | Formulario para crear una nueva película (CREATE) |
-| **Editar película** | Formulario para actualizar una película existente (UPDATE) |
-| **Eliminar película** | Elimina una película con confirmación (DELETE) |
-| **API REST** | Proporciona endpoints JSON para integración (GET, POST, PUT, DELETE) |
-| **Validación de datos** | Valida campos obligatorios y rango de años |
-| **Mensajes de éxito/error** | Feedback al usuario tras cada operación |
+| **Full CRUD Operations** | Seamless creation, reading, updating, and deletion of movie records. |
+| **REST API Integration** | Exposes JSON endpoints (GET, POST, PUT, DELETE) ready for automated API testing. |
+| **Data Validation** | Strict validation of required fields and year ranges to ensure data integrity. |
+| **Error Handling** | Returns appropriate HTTP status codes (200, 201, 204, 400, 404, 405) for precise test assertions. |
+| **Secure Architecture** | Separation of concerns and secure database connection using PDO. |
 
----
+## 🛠️ Technologies Used
 
-## 🛠️ Tecnologías utilizadas
+- **Backend:** PHP
+- **Database:** MySQL
+- **Security:** PDO (PHP Data Objects), Prepared Statements
+- **Frontend:** HTML5, CSS3
+- **Version Control:** Git, GitHub
 
-- **PHP** – Lógica del backend
-- **MySQL** – Base de datos
-- **PDO** – Conexión segura a la base de datos
-- **HTML5** – Estructura
-- **CSS3** – Estilos
-- **Git** – Control de versiones
-- **GitHub** – Alojamiento del repositorio
+## 📂 Folder Structure
+````
+   21-php-movie-crud/
+   ├── api/
+   │   └── peliculas.php       # REST API endpoints (GET, POST, PUT, DELETE)
+   ├── css/
+   │   └── style.css           # Styling (dark theme, UI components)
+   ├── conexion.php            # Secure database connection (PDO)
+   ├── index.php               # Movie list (READ)
+   ├── crear.php               # Create form (CREATE)
+   ├── editar.php              # Edit form (UPDATE)
+   ├── eliminar.php            # Delete logic (DELETE)
+   ├── peliculas.sql           # Database export (schema + initial data)
+   └── README.md
+````
 
----
 
-## 📂 Estructura de carpetas
-
-```
-21-php-movie-crud/
-├── api/
-│   └── peliculas.php       # API REST (GET, POST, PUT, DELETE)
-├── css/
-│   └── style.css           # Estilos (fondo oscuro, botones de colores)
-├── conexion.php            # Conexión a la base de datos (PDO)
-├── index.php               # Listado de películas (READ)
-├── crear.php               # Formulario de creación (CREATE)
-├── editar.php              # Formulario de edición (UPDATE)
-├── eliminar.php            # Lógica de eliminación (DELETE)
-├── peliculas.sql           # Exportación de la base de datos (estructura + datos)
-└── README.md
-```
-
----
-
-## 🗄️ Configuración de la base de datos
-
-Importa el archivo `peliculas.sql` usando **phpMyAdmin** o la línea de comandos:
-
-```bash
-mysql -u root -p < peliculas.sql
-```
-
-O copia el script SQL manualmente:
-
-```sql
-CREATE DATABASE IF NOT EXISTS cine
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-
-USE cine;
-
-CREATE TABLE IF NOT EXISTS peliculas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(150) NOT NULL,
-    director VARCHAR(100) NOT NULL,
-    genero VARCHAR(50) NOT NULL,
-    anio INT NOT NULL,
-    duracion INT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO peliculas (titulo, director, genero, anio, duracion) VALUES
-('Caperucita Roja', 'Luis Diaz', 'Aventura', 2025, 145),
-('Titanic', 'Frank Suarez', 'Romance', 1999, 180),
-('God of War', 'Steven Road', 'Acción', 2026, 185),
-('Hombres de Negro 2', 'Will Mathers', 'Acción', 2002, 195),
-('Furia de Titanes', 'Robert Garcia', 'Épico', 2025, 195);
-```
-
----
-
-## 🚀 Cómo ejecutarlo
-
-1. Clona el repositorio o descarga los archivos.
-2. Coloca la carpeta del proyecto en tu servidor local (por ejemplo, `htdocs` para XAMPP).
-3. Inicia Apache y MySQL en XAMPP.
-4. Importa el archivo `peliculas.sql` usando phpMyAdmin.
-5. Abre `index.php` en tu navegador.
-
----
-
-## 🔌 Endpoints de la API REST
-
-| Método | Endpoint | Descripción | Respuesta |
-| :--- | :--- | :--- | :--- |
-| GET | `/api/peliculas.php` | Obtener todas las películas | 200 + array JSON |
-| GET | `/api/peliculas.php?id=1` | Obtener una película específica | 200 + objeto JSON |
-| POST | `/api/peliculas.php` | Crear una nueva película | 201 + objeto JSON |
-| PUT | `/api/peliculas.php?id=1` | Actualizar una película | 200 + objeto JSON |
-| DELETE | `/api/peliculas.php?id=1` | Eliminar una película | 204 Sin contenido |
-
-### Ejemplo: Crear una película (POST)
-
-```json
-{
-    "titulo": "El Padrino",
-    "director": "Francis Ford Coppola",
-    "genero": "Drama",
-    "anio": 1972,
-    "duracion": 175
-}
-```
-
----
-
-## 📚 Conceptos aprendidos
-
-- Operaciones CRUD con PHP y MySQL
-- Conexión PDO y sentencias preparadas
-- Validación y saneamiento de datos
-- Fundamentos de API REST (GET, POST, PUT, DELETE)
-- Códigos de estado HTTP (200, 201, 204, 400, 404, 405)
-- Codificación y decodificación JSON
-- Separación de responsabilidades (un archivo por acción)
-
----
-
-## 👤 Autor
-
-*NTR1991 – Full Stack en formación | Estudiante de FP DAW*
-
-## 📅 Fecha
-
-Septiembre 2026
