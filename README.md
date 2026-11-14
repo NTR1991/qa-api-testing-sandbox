@@ -50,4 +50,48 @@ Crud-Examen/
     └── videojuegos.sql       # Database export (schema + initial data)
 ````
 
+## 🗄️ Database Setup
 
+Import the `videojuegos.sql` file using phpMyAdmin or the command line:
+
+    mysql -u root -p < videojuegos.sql
+
+## 🔌 REST API Endpoints (Ready for Testing)
+
+This API is fully prepared to be tested manually (e.g., via Postman) or automated (e.g., via REST Assured, Python Requests, or similar).
+
+| Method | Endpoint | Description | Expected Response |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/juegos.php` | Retrieve all video games | `200 OK` + JSON Array |
+| `GET` | `/api/juegos.php?id=1` | Retrieve a specific game | `200 OK` + JSON Object |
+| `POST` | `/api/juegos.php` | Create a new game | `201 Created` + JSON Object |
+| `PUT` | `/api/juegos.php?id=1` | Update an existing game | `200 OK` + JSON Object |
+| `DELETE` | `/api/juegos.php?id=1` | Delete a game | `204 No Content` |
+
+### Example Request (POST)
+
+    {
+        "titulo": "The Legend of Zelda",
+        "desarrollador": "Nintendo",
+        "plataforma": "Nintendo Switch",
+        "genero": "Aventura",
+        "anio": 2023
+    }
+---
+
+
+## 📚 Technical & QA Concepts Applied
+
+- **Backend Development:** Implemented full CRUD operations using PHP and MySQL.
+- **API Testing Preparation:** Designed endpoints that return standard HTTP status codes (200, 201, 204, 400, 404, 405), making them perfect for writing automated test assertions.
+- **Data Validation:** Implemented server-side validation, mimicking real-world scenarios where QA must test edge cases (e.g., invalid year formats, missing fields).
+- **Security Testing:** Used PDO and prepared statements, providing a secure baseline to practice vulnerability testing (e.g., SQL injection attempts).
+- **JSON Serialization:** Ensured proper JSON encoding/decoding for reliable API payload verification.
+
+---
+
+## 👤 Author
+
+**Nestor Reyes**  
+*IT Support Specialist & QA Automation | Java, SQL, JUnit*  
+[LinkedIn](https://linkedin.com/in/nestor-reyes-) | [GitHub](https://github.com/NTR1991)
