@@ -1,4 +1,4 @@
-# 🎬 Movie Management System: PHP REST API & CRUD
+# 🎮 Video Game Management System: PHP REST API & CRUD
 
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
@@ -8,7 +8,7 @@
 ![QA Ready](https://img.shields.io/badge/QA_Automation-Ready-success?style=for-the-badge)
 
 ## 📋 Project Overview
-A robust, fully functional CRUD (Create, Read, Update, Delete) application built with **PHP and MySQL** to manage a movie catalog. The system features a clean user interface and, most importantly, a comprehensive **REST API** designed for programmatic access and integration testing.
+A robust, fully functional CRUD (Create, Read, Update, Delete) application built with **PHP and MySQL** to manage a video game catalog. The system features a clean user interface and, most importantly, a comprehensive **REST API** designed for programmatic access and integration testing.
 
 ## 🎯 Objective & QA Perspective
 The primary goal was to architect a secure backend using **PDO (PHP Data Objects)** and **prepared statements** to prevent SQL injection. 
@@ -19,7 +19,7 @@ From a **Quality Assurance perspective**, this project serves as an ideal test b
 
 | Feature | Description |
 | :--- | :--- |
-| **Full CRUD Operations** | Seamless creation, reading, updating, and deletion of movie records. |
+| **Full CRUD Operations** | Seamless creation, reading, updating, and deletion of video game records. |
 | **REST API Integration** | Exposes JSON endpoints (GET, POST, PUT, DELETE) ready for automated API testing. |
 | **Data Validation** | Strict validation of required fields and year ranges to ensure data integrity. |
 | **Error Handling** | Returns appropriate HTTP status codes (200, 201, 204, 400, 404, 405) for precise test assertions. |
@@ -34,19 +34,20 @@ From a **Quality Assurance perspective**, this project serves as an ideal test b
 - **Version Control:** Git, GitHub
 
 ## 📂 Folder Structure
+
 ````
-   21-php-movie-crud/
-   ├── api/
-   │   └── peliculas.php       # REST API endpoints (GET, POST, PUT, DELETE)
-   ├── css/
-   │   └── style.css           # Styling (dark theme, UI components)
-   ├── conexion.php            # Secure database connection (PDO)
-   ├── index.php               # Movie list (READ)
-   ├── crear.php               # Create form (CREATE)
-   ├── editar.php              # Edit form (UPDATE)
-   ├── eliminar.php            # Delete logic (DELETE)
-   ├── peliculas.sql           # Database export (schema + initial data)
-   └── README.md
+Crud-Examen/
+└── Videojuegos_Crud/
+    ├── api/
+    │   └── juegos.php        # REST API endpoints (GET, POST, PUT, DELETE)
+    ├── css/
+    │   └── style.css         # Styling (dark theme, UI components)
+    ├── conexion.php          # Secure database connection (PDO)
+    ├── index.php             # Video game list (READ)
+    ├── crear.php             # Create form (CREATE)
+    ├── editar.php            # Edit form (UPDATE)
+    ├── eliminar.php          # Delete logic (DELETE)
+    └── videojuegos.sql       # Database export (schema + initial data)
 ````
 
 
