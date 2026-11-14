@@ -7,16 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = trim($_POST['titulo']);
     $director = trim($_POST['director']);
     $genero = trim($_POST['genero']);
-    $anio = (int) $_POST['anio'];      // 👈 CAMBIADO: $anio (sin ñ)
+    $anio = (int) $_POST['anio'];
     $duracion = (int) $_POST['duracion'];
 
-    // Validaciones
+    // Validaciones (Backend)
     if (empty($titulo) || empty($director) || empty($genero) || empty($anio) || empty($duracion)) {
         $error = "Todos los campos son obligatorios.";
     } elseif ($anio < 1900 || $anio > date('Y')) {
         $error = "El año debe estar entre 1900 y " . date('Y');
+    } elseif ($duracion <= 0) {
+        $error = "La duración debe ser mayor a 0 minutos.";
     } else {
-        
         $sql = "INSERT INTO peliculas (titulo, director, genero, anio, duracion) 
                 VALUES (:titulo, :director, :genero, :anio, :duracion)";
         
