@@ -1,8 +1,16 @@
 <?php
 require_once 'conexion.php';
-$id = (int) $_GET['id'];
 $error = '';
 
+// QA Check: Verificar que el ID exista en la URL
+if (!isset($_GET['id'])) {
+    header('Location: index.php?mensaje=Película no encontrada');
+    exit;
+}
+
+$id = (int) $_GET['id'];
+
+// Obtener datos actuales de la película
 $stmt = $pdo->prepare("SELECT * FROM peliculas WHERE id = :id");
 $stmt->execute([':id' => $id]);
 $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -19,12 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $anio = (int) $_POST['anio'];      
     $duracion = (int) $_POST['duracion'];
 
+    // Validaciones
     if (empty($titulo) || empty($director) || empty($genero) || empty($anio) || empty($duracion)) {
         $error = "Todos los campos son obligatorios.";
     } elseif ($anio < 1900 || $anio > date('Y')) {
         $error = "El año debe estar entre 1900 y " . date('Y');
+    } elseif ($duracion <= 0) {
+        $error = "La duración debe ser mayor a 0 minutos.";
     } else {
-       
         $sql = "UPDATE peliculas SET titulo = :titulo, director = :director, 
                 genero = :genero, anio = :anio, duracion = :duracion WHERE id = :id";
         $stmt = $pdo->prepare($sql);
